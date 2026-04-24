@@ -1,0 +1,16 @@
+{
+  "name": "vite-chunks-plugin-example",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "verify": "node ./verify-build.mjs"
+  },
+  "devDependencies": {
+    "vite": "^8.0.10",
+    "vite-chunks-plugin": "file:.."
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  }
+}

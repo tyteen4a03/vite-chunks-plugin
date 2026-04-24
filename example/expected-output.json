@@ -1,0 +1,61 @@
+{
+  "entries": {
+    "shared/app-a": {
+      "styles": {
+        "patterns": [
+          "https://example\\.com/dist/css/shared\\.css",
+          "https://example\\.com/dist/css/app-a\\.css"
+        ]
+      },
+      "scripts": {
+        "patterns": [
+          "https://example\\.com/dist/js/shared-[A-Za-z0-9_-]+\\.js",
+          "https://example\\.com/dist/js/shared/app-a\\.js"
+        ]
+      },
+      "manifest": {
+        "styles": ["/dist/css/shared.css", "/dist/css/app-a.css"],
+        "scripts": ["/dist/js/shared/app-a.js"],
+        "preloadsPattern": "^/dist/js/shared-[A-Za-z0-9_-]+\\.js$"
+      }
+    },
+    "app-b": {
+      "styles": {
+        "patterns": [
+          "https://example\\.com/dist/css/shared\\.css",
+          "https://example\\.com/dist/css/app-b\\.css"
+        ]
+      },
+      "scripts": {
+        "patterns": [
+          "https://example\\.com/dist/js/shared-[A-Za-z0-9_-]+\\.js",
+          "https://example\\.com/dist/js/app-b\\.js"
+        ]
+      },
+      "manifest": {
+        "styles": ["/dist/css/shared.css", "/dist/css/app-b.css"],
+        "scripts": ["/dist/js/app-b.js"],
+        "preloadsPattern": "^/dist/js/shared-[A-Za-z0-9_-]+\\.js$"
+      }
+    },
+    "app-c": {
+      "styles": {
+        "patterns": [
+          "https://example\\.com/dist/css/shared\\.css",
+          "https://example\\.com/dist/css/app-c\\.css"
+        ]
+      },
+      "scripts": {
+        "patterns": [
+          "https://example\\.com/dist/js/shared-[A-Za-z0-9_-]+\\.js",
+          "https://example\\.com/dist/js/app-c\\.js"
+        ]
+      },
+      "manifest": {
+        "styles": ["/dist/css/shared.css", "/dist/css/app-c.css"],
+        "scripts": ["/dist/js/app-c.js"],
+        "preloadsPattern": "^/dist/js/shared-[A-Za-z0-9_-]+\\.js$"
+      }
+    }
+  }
+}

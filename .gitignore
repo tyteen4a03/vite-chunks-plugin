@@ -1,0 +1,20 @@
+dist/
+example/dist/
+node_modules/
+example/node_modules/
+coverage/
+.husky/_/
+
+# npm packaging artifacts
+*.tgz
+
+# TypeScript incremental build info
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor files
+.DS_Store
+.idea/
