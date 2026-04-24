@@ -11,6 +11,9 @@
   ],
   "license": "MIT",
   "author": "",
+  "repository": {
+    "url": "https://github.com/tyteen4a03/vite-chunks-plugin"
+  },
   "files": [
     "dist"
   ],
