@@ -14,6 +14,36 @@ afterEach(async () => {
 });
 
 describe("vite-chunks-plugin", { timeout: 15000 }, () => {
+  it("accepts correctly typed options", () => {
+    expect(() =>
+      viteChunksPlugin({
+        filename: "templates/[name]-[type].html",
+        generateChunksManifest: true,
+        generateChunksFiles: false,
+      }),
+    ).not.toThrow();
+  });
+
+  it("rejects incorrectly typed options", () => {
+    expect(() =>
+      viteChunksPlugin({
+        filename: 123 as unknown as string,
+      }),
+    ).toThrowError('"filename" must be a string.');
+
+    expect(() =>
+      viteChunksPlugin({
+        generateChunksManifest: "yes" as unknown as boolean,
+      }),
+    ).toThrowError('"generateChunksManifest" must be a boolean.');
+
+    expect(() =>
+      viteChunksPlugin({
+        generateChunksFiles: "no" as unknown as boolean,
+      }),
+    ).toThrowError('"generateChunksFiles" must be a boolean.');
+  });
+
   it("emits per-entry partials and a chunks manifest for absolute bases", async () => {
     const { distDirectory, readDistFile, readManifest } = await buildFixture({
       base: "/dist/",

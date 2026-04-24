@@ -1,10 +1,6 @@
 import path from "node:path";
 import type { Plugin, ResolvedConfig } from "vite";
-import type {
-  ChunksManifest,
-  TemplateFunction,
-  ViteChunksPluginOptions,
-} from "./types.js";
+import type { ChunksManifest, TemplateFunction, ViteChunksPluginOptions } from "./types.js";
 
 type OutputBundleLike = Record<string, OutputBundleEntryLike>;
 
@@ -168,13 +164,17 @@ function resolveOptions(userOptions: Partial<ViteChunksPluginOptions>): ViteChun
 }
 
 function validateOptions(userOptions: Partial<ViteChunksPluginOptions>): void {
+  const filename = userOptions.filename as unknown;
+  const generateChunksManifest = userOptions.generateChunksManifest as unknown;
+  const generateChunksFiles = userOptions.generateChunksFiles as unknown;
+
   for (const key of Object.keys(userOptions)) {
     if (!VALID_OPTION_KEYS.has(key as keyof ViteChunksPluginOptions)) {
       throw new TypeError(`vite-chunks-plugin received an unknown option: "${key}".`);
     }
   }
 
-  if (userOptions.filename !== undefined) {
+  if (filename !== undefined && typeof filename !== "string") {
     throw new TypeError(`"filename" must be a string.`);
   }
 
@@ -182,13 +182,11 @@ function validateOptions(userOptions: Partial<ViteChunksPluginOptions>): void {
   validateTemplateOption("templateScript", userOptions.templateScript);
   validateTemplateOption("templatePreload", userOptions.templatePreload);
 
-  if (
-    userOptions.generateChunksManifest !== undefined
-  ) {
+  if (generateChunksManifest !== undefined && typeof generateChunksManifest !== "boolean") {
     throw new TypeError(`"generateChunksManifest" must be a boolean.`);
   }
 
-  if (userOptions.generateChunksFiles !== undefined) {
+  if (generateChunksFiles !== undefined && typeof generateChunksFiles !== "boolean") {
     throw new TypeError(`"generateChunksFiles" must be a boolean.`);
   }
 }
